@@ -24,7 +24,7 @@ public struct VTSideMenu<MenuContent: View>: ViewModifier {
         isShowing: Binding<Bool>,
         contentOpacityLevel: Double = 0.5,
         contentOpacityColor: Color = .gray,
-        moveContent: Bool = true,
+        moveContent: Bool = false,
         sideMenuWidthSetting: SideMenuWidth = .relative(0.7),
         @ViewBuilder menuContent: @escaping () -> MenuContent)
     {
@@ -83,7 +83,7 @@ public struct VTSideMenu<MenuContent: View>: ViewModifier {
 }
 
 extension View {
-    func vtSideMenu<MenuContent: View>(isShowing: Binding<Bool>, @ViewBuilder menuContent: @escaping () -> MenuContent) -> some View {
+    public func vtSideMenu<MenuContent: View>(isShowing: Binding<Bool>, @ViewBuilder menuContent: @escaping () -> MenuContent) -> some View {
         self.modifier(VTSideMenu(isShowing: isShowing, menuContent: menuContent))
     }
 }
